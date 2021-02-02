@@ -8,15 +8,15 @@
 #include "../utils/utils_part.h"
 
 struct eviction_policy_ops evict_policy_ops[ocf_eviction_max] = {
-	[ocf_eviction_lru] = {
-		.init_cline = evp_lru_init_cline,
-		.rm_cline = evp_lru_rm_cline,
-		.req_clines = evp_lru_req_clines,
-		.hot_cline = evp_lru_hot_cline,
-		.init_evp = evp_lru_init_evp,
-		.dirty_cline = evp_lru_dirty_cline,
-		.clean_cline = evp_lru_clean_cline,
-		.name = "lru",
+	[ocf_eviction_mru] = {
+		.init_cline = evp_mru_init_cline,
+		.rm_cline = evp_mru_rm_cline,
+		.req_clines = evp_mru_req_clines,
+		.hot_cline = evp_mru_hot_cline,
+		.init_evp = evp_mru_init_evp,
+		.dirty_cline = evp_mru_dirty_cline,
+		.clean_cline = evp_mru_clean_cline,
+		.name = "mru",
 	},
 };
 
@@ -50,7 +50,7 @@ static inline uint32_t ocf_evict_part_do(ocf_cache_t cache,
 {
 	uint32_t to_evict = 0;
 
-	if (!evp_lru_can_evict(cache))
+	if (!evp_mru_can_evict(cache))
 		return 0;
 
 	to_evict = ocf_evict_calculate(cache, target_part, evict_cline_no,

@@ -7,8 +7,8 @@
 #define __LAYER_EVICTION_POLICY_H__
 
 #include "ocf/ocf.h"
-#include "lru.h"
-#include "lru_structs.h"
+#include "mru.h"
+#include "mru_structs.h"
 #include "../ocf_request.h"
 
 #define OCF_TO_EVICTION_MIN 128UL
@@ -20,13 +20,13 @@ struct ocf_user_part;
 
 struct eviction_policy {
 	union {
-		struct lru_eviction_policy lru;
+		struct mru_eviction_policy mru;
 	} policy;
 };
 
 /* Eviction policy metadata per cache line */
 union eviction_policy_meta {
-	struct lru_eviction_policy_meta lru;
+	struct mru_eviction_policy_meta mru;
 } __attribute__((packed));
 
 /* the caller must hold the metadata lock for all operations
