@@ -1,3 +1,12 @@
+# MRU Policy in OpenCAS
+
+40424 - Operating Systems
+
+| Name	         |Student_Number|
+|----------------|--------------|
+| Mahsa Amani	   |97105769      |
+| Zahra	Hosseini |95105505      |
+
 # Open CAS Framework
 
 [![Build Status](https://d1rxsi9lvcwnz5.cloudfront.net/master-status/build/curr-badge.svg)](https://d1rxsi9lvcwnz5.cloudfront.net/master-status/build/build.html)
